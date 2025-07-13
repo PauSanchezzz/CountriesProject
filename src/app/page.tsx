@@ -1,103 +1,106 @@
-import Image from "next/image";
+"use client";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useCountryStore } from "../store/country.store";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  /* Store */
+  const storeCountries = useCountryStore((state) => state.countries);
+  const { getCountries, filterByRegion, filterByName } = useCountryStore();
+  /* Variables */
+  const continents = ["Africa", "Americas", "Asia", "Europe", "Oceania", "All"];
+  const [value, setValue] = useState("");
+  /* Methods */
+  useEffect(() => {
+    getCountries();
+  }, []);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const filteredContinents = (value: string) => {
+    setValue("");
+    if (value === "All") {
+      getCountries();
+      return;
+    }
+    filterByRegion(value);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    setTimeout(() => {
+      if (e.target.value.trim() === "") {
+        getCountries();
+        return;
+      }
+      filterByName(e.target.value.trim());
+    }, 500);
+  };
+
+  return (
+    <div className="home-page">
+      <div className="home-filters">
+        <Input value={value} onChange={handleChange} />
+        <div className="general-select">
+          <Select onValueChange={(value) => filteredContinents(value)}>
+            <SelectTrigger className="general-select-trigger">
+              <SelectValue placeholder="Filter by Region" />
+            </SelectTrigger>
+            <SelectContent className="general-select-content">
+              {continents.map((continent) => (
+                <SelectItem
+                  className="select-item"
+                  key={continent}
+                  value={continent}
+                >
+                  {continent}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      {!storeCountries || storeCountries.length === 0 ? (
+        <div className="loading">
+          <img src="/gif/loading.gif" alt="loading" />
+          <p>Currently there is no information available, try another search</p>
+        </div>
+      ) : null}
+      <div className="home-content">
+        {storeCountries &&
+          storeCountries.map((country, index) => (
+            <Link
+              key={index}
+              className="card"
+              href={`/country/${country.ccn3}`}
+            >
+              <img src={country.flags.png} alt={`${country.flags.alt} flag`} />
+              <div className="card-content">
+                <h1 className="card-title">{country.name.official}</h1>
+                <div className="card-description">
+                  <p className="item-text">
+                    <span className="title-item-text">Population: </span>
+                    {country.population.toLocaleString()}
+                  </p>
+                  <p className="item-text">
+                    <span className="title-item-text">Region: </span>
+                    {country.region}
+                  </p>
+                  <p className="item-text">
+                    <span className="title-item-text">Capital: </span>
+                    {country.capital?.[0]}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }
