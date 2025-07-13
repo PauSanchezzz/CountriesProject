@@ -6,6 +6,12 @@ Su propósito es facilitar la visualización de datos como nombre del país, pob
 
 ---
 
+## 🚀 Despliegue
+
+Puedes ver el proyecto funcionando aquí 👉 [Ir al sitio desplegado](https://worldcountriesps.netlify.app/)
+
+---
+
 ## ✨ Funcionalidades
 
 - 🔍 Búsqueda por nombre de país
@@ -40,6 +46,28 @@ La arquitectura del proyecto está basada en una estructura modular y organizada
 
 - 🔗 API: [REST Countries v3.1](https://restcountries.com/)
 - 📘 Guía de estilos: incluida en el proyecto como `style-guide.md`
+
+---
+
+## 🎨 Vistas del Proyecto
+
+### 🌐 Página principal
+
+![Detalle Modo Claro](public/images/home_light.png)
+
+![Detalle Modo Claro](public/images/home_dark.png)
+
+![Detalle Modo Claro](public/images/home_light_responsive.png)
+
+### 🌐 Página principal con filtro
+
+![Vista Home](public/images/filter.png)
+
+### 🌞 Vista del detalle del país 🌙
+
+![Detalle Modo Claro](public/images/detail_light.png)
+
+![Detalle Modo Claro](public/images/detail_dark.png)
 
 ---
 
