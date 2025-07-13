@@ -49,28 +49,6 @@ La arquitectura del proyecto está basada en una estructura modular y organizada
 
 ---
 
-## 🎨 Vistas del Proyecto
-
-### 🌐 Página principal
-
-![Detalle Modo Claro](public/images/home_light.png)
-
-![Detalle Modo Claro](public/images/home_dark.png)
-
-![Detalle Modo Claro](public/images/home_light_responsive.png)
-
-### 🌐 Página principal con filtro
-
-![Vista Home](public/images/filter.png)
-
-### 🌞 Vista del detalle del país 🌙
-
-![Detalle Modo Claro](public/images/detail_light.png)
-
-![Detalle Modo Claro](public/images/detail_dark.png)
-
----
-
 ## 🚀 Cómo ejecutar el proyecto
 
 1. Clona el repositorio:
@@ -91,3 +69,25 @@ La arquitectura del proyecto está basada en una estructura modular y organizada
    ```bash
    npm run dev
    ```
+
+---
+
+## 🎨 Vistas del Proyecto
+
+### 🌐 Página principal
+
+![Detalle Modo Claro](public/images/home_light.png)
+
+![Detalle Modo Claro](public/images/home_dark.png)
+
+![Detalle Modo Claro](public/images/home_light_responsive.png)
+
+### 🌐 Página principal con filtro
+
+![Vista Home](public/images/filter.png)
+
+### 🌞 Vista del detalle del país 🌙
+
+![Detalle Modo Claro](public/images/detail_light.png)
+
+![Detalle Modo Claro](public/images/detail_dark.png)
