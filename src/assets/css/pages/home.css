@@ -1,0 +1,71 @@
+.home-page {
+  padding: 50px;
+  width: 100%;
+  .home-filters {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 500px;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+  .home-content {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin-top: 40px;
+    width: 100%;
+
+    .card {
+      background-color: var(--elements);
+      border-radius: 8px;
+      box-shadow: -1px 1px 13px 3px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+      }
+      .card-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+        .card-title {
+          font-family: "app-font-800";
+          font-size: 18px;
+        }
+        .card-description {
+          display: flex;
+          align-items: start;
+          flex-direction: column;
+          gap: 5px;
+          .item-text {
+            .title-item-text {
+              font-family: "app-font-600";
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 780px) {
+    padding: 40px 20px;
+    .home-filters {
+      flex-direction: column;
+      align-items: start;
+      gap: 20px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Navbar } from "./components/general/navbar";
+import { Navbar } from "@/components/general/navbar";
 
 export const metadata: Metadata = {
   title: "Countries Project",

@@ -1,5 +1,3 @@
-@import "../utilities/variables.css";
-
 .navbar {
   align-items: center;
   background-color: var(--elements);
