@@ -2,11 +2,13 @@
 @import "../assets/css/utilities/variables.css";
 @import "../assets/css/components/navbar.css";
 @import "../assets/css/pages/home.css";
+@import "../assets/css/pages/detail.css";
 @import "../assets/css/components/input.css";
 @import "../assets/css/components/select.css";
+@import "../assets/css/components/button.css";
 @import "tailwindcss";
 @import "tw-animate-css";
-/*  ---break--- */
+
 body {
   font-family: "app-font-300";
   background-color: var(--background);

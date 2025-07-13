@@ -1,0 +1,82 @@
+.detail-content {
+  padding: 40px 80px;
+
+  .general-content {
+    height: calc(100vh - 198px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 100px;
+
+    .flag {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .title-text {
+      font-family: "app-font-800";
+      font-size: 35px;
+    }
+
+    .title-item-text {
+      font-family: "app-font-600";
+    }
+
+    .all-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .description-content,
+      .additional-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 45px;
+
+        .item-text {
+          margin: 5px 0;
+
+          .title-item-text {
+            font-family: "app-font-600";
+          }
+        }
+      }
+
+      .additional-info {
+        align-items: center;
+        gap: 10px;
+
+        .tags-content {
+          display: flex;
+          flex-wrap: wrap;
+
+          .tag-item {
+            width: fit-content;
+            padding: 5px 30px;
+            background-color: var(--elements);
+            box-shadow: -1px 1px 13px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            margin: 5px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 976px) {
+    padding: 40px;
+
+    .general-content {
+      gap: 25px;
+      grid-template-columns: 1fr;
+      height: 100%;
+      margin-top: 3rem;
+
+      .flag {
+        max-width: 700px;
+      }
+    }
+  }
+}
